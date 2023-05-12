@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:build":"tsc -w",
+    "start:build": "tsc -w",
     "start:run": "nodemon build/index.js",
-    "start":"concurrently npm:start:*"
+    "start": "concurrently npm:start:*"
   },
   "keywords": [],
   "author": "karthik",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^20.1.3",
     "concurrently": "^8.0.1",
     "nodemon": "^2.0.22"
   }
