@@ -1,4 +1,6 @@
 import fs from 'fs';
+import { dateStringToDate } from './utils';
+import { MatchResults } from "./MatchResult";
 export class CsvFileReader
 {
     data:string[][]=[];
@@ -12,6 +14,18 @@ export class CsvFileReader
         .map((row:string):string[]=>
         {
             return row.split(',');
-        });
+        }).map((row:string[]):any=>
+        {
+            return [
+            dateStringToDate(row[0]),
+            row[1],
+            row[2],
+            parseInt(row[3]),
+            parseInt(row[4]),
+            row[5] as MatchResults, //* type asseration so now onwards typescript know which values should accept,here we have more clarity then typescript on data type i.e reason we used type asseration
+            row[6] as MatchResults,
+            row[7]
+        ]
+        })
     }
 }
