@@ -17,7 +17,8 @@ class CsvFileReader {
         }).split('\n')
             .map((row) => {
             return row.split(',');
-        }).map((row) => {
+        })
+            .map((row) => {
             return [
                 (0, utils_1.dateStringToDate)(row[0]),
                 row[1],
@@ -25,8 +26,7 @@ class CsvFileReader {
                 parseInt(row[3]),
                 parseInt(row[4]),
                 row[5],
-                row[6],
-                row[7]
+                row[6]
             ];
         });
     }
