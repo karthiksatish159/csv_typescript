@@ -1,9 +1,10 @@
 import fs from 'fs';
 import { dateStringToDate } from './utils';
 import { MatchResults } from "./MatchResult";
+type MatchData=[Date,string,string,number,number,MatchResults,string];
 export class CsvFileReader
 {
-    data:string[][]=[];
+    data:MatchData[]=[];
     constructor(public filename:string){}
     read():void
     {
@@ -15,7 +16,7 @@ export class CsvFileReader
         {
             return row.split(',');
         })
-        .map((row:string[]):any=>
+        .map((row:string[]):MatchData=>
         {
             return [
             dateStringToDate(row[0]),
@@ -25,7 +26,7 @@ export class CsvFileReader
             parseInt(row[4]),
             row[5] as MatchResults, //* type asseration so now onwards typescript know which values should accept,here we have more clarity then typescript on data type i.e reason we used type asseration
             row[6]
-        ]
+            ]
         })
     }
 }
