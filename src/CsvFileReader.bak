@@ -16,11 +16,9 @@ export class CsvFileReader
         {
             return row.split(',');
         })
-        .map(this.mapReader)
-    }
-    mapReader(row:string[]):MatchData
-    {
-        return [
+        .map((row:string[]):MatchData=>
+        {
+            return [
             dateStringToDate(row[0]),
             row[1],
             row[2],
@@ -29,5 +27,6 @@ export class CsvFileReader
             row[5] as MatchResults, //* type asseration so now onwards typescript know which values should accept,here we have more clarity then typescript on data type i.e reason we used type asseration
             row[6]
             ]
+        })
     }
 }
